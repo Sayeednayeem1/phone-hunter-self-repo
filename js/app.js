@@ -12,6 +12,17 @@ const displayPhones = phones =>{
     console.log(phones);
     const phonesContainer = document.getElementById('phone-container');
     phonesContainer.textContent = '';
+    // diplay 5 phones only
+    phones = phones.slice(0, 5);
+
+    // display no phone found
+    const noPhone = document.getElementById('no-found-message');
+    if(phones.length === 0){
+        noPhone.classList.remove('d-none');
+    }
+    else{
+        noPhone.classList.add('d-none');
+    }
     phones.forEach(phone =>{
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
@@ -35,4 +46,4 @@ document.getElementById('btn-search').addEventListener('click', function(){
     const searchText = searchField.value;
     loadPhones(searchText);
 })
-loadPhones();
+loadPhones("iphone");
